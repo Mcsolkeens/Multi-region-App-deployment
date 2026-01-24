@@ -8,10 +8,16 @@ const REGION = process.env.AWS_REGION || "local";
 // Read port (cloud standard)
 const PORT = process.env.PORT || 8080;
 
-// Root route
-app.get("/", (req, res) => {
-  res.send(`Hello from ${REGION}!`);
+// ---- CORS (required for browser latency tests) ----
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
 });
+
+// ---- Serve static files (index.html at root) ----
+app.use(express.static(path.join(__dirname)));
 
 // Health check (still production-friendly)
 app.get("/health", (req, res) => {

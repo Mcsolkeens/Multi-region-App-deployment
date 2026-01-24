@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Region Latency Test</title>
+</head>
+<body>
+<pre id="output">Measuring latency...</pre>
+
+<script>
+const regions = [
+  {
+    name: "us-east-1",
+    url: "https://qd9hbczipm.us-east-1.awsapprunner.com/health"
+  },
+  {
+    name: "us-west-2",
+    url: "https://btte6pmbcq.us-west-2.awsapprunner.com/health"
+  }
+];
+
+const output = document.getElementById("output");
+
+async function ping(region) {
+  const start = performance.now();
+  await fetch(region.url, { cache: "no-store" });
+  const end = performance.now();
+  return Math.round(end - start);
+}
+
+async function run() {
+  let results = "";
+
+  for (const region of regions) {
+    try {
+      const latency = await ping(region);
+      results += `${region.name}: ${latency} ms\n`;
+    } catch (err) {
+      results += `${region.name}: FAILED\n`;
+    }
+  }
+
+  output.textContent = results;
+}
+
+run();
+</script>
+</body>
+</html>
