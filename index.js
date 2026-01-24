@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 
 const app = express();
 
@@ -7,6 +8,9 @@ const REGION = process.env.AWS_REGION || "local";
 
 // Read port (cloud standard)
 const PORT = process.env.PORT || 8080;
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Root route
 app.get("/", (req, res) => {
@@ -34,3 +38,10 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Serving traffic from region: ${REGION}`);
 });
+
+
+
+
+
+
+
