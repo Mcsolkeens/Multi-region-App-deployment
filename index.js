@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.send(`Hello from ${REGION}!`);
 });
 
-// ---- CORS (required for browser latency tests) ----
+// ---- CORS (required for browser latency tests) ---
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
