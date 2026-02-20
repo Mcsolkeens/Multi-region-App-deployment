@@ -42,6 +42,7 @@ Lower latency: Users connect to closer regions
 Production readiness: Built-in CI/CD and observability
 
 ## 🏗️ Architecture
+
 GitHub (main branch)
         |
         |  (automatic deployment)
@@ -67,13 +68,14 @@ Scaling
 HTTPS certificates
 
 ## 🧰 Tools & Technologies Used
-Tool	Purpose
-Node.js (Express.js)	Web application
-AWS App Runner	Managed container hosting
-GitHub	Source control & CI/CD trigger
-AWS Regions	Multi-region redundancy
-Environment Variables	Region detection
-Browser Performance API	Latency measurement
+Tool	                       Purpose
+Node.js (Express.js)	       Web application
+AWS App Runner	               Managed container hosting
+GitHub	                       Source control & CI/CD trigger
+AWS Regions	               Multi-region redundancy
+Environment Variables	       Region detection
+Browser Performance API	       Latency measurement
+
 ## ✨ Key Features
 🌎 Multi-Region Deployment
 
